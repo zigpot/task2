@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XtramileSolutionTest", "XtramileSolutionTest\XtramileSolutionTest.csproj", "{F5700C2F-60E7-405D-B71F-AB0F3119197F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "WeatherApp\WeatherApp.csproj", "{F5700C2F-60E7-405D-B71F-AB0F3119197F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
