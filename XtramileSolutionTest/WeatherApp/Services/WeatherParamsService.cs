@@ -60,18 +60,16 @@ namespace XtramileSolutionTest.Services
             int seed = (city + (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond)).GetHashCode();
             Random rng = new Random(seed);
             WeatherParams returnWeatherParams =
-                new WeatherParams
-                {
-                    Location = city,
-                    SkyCondition = RetrieveSkyCondition(rng),
-                    Wind = RetrieveWind(rng),
-                    Visibility = RetrieveVisibility(rng),
-                    DewPoint = RetrieveDewPoint(rng),
-                    RelativeHumidity = RetrieveRelativeHumidity(rng),
-                    Pressure = RetrievePressure(rng),
-                    Time = RetrieveTime(),
-                    TemperatureC = RetrieveTemperatureC(rng)
-                };
+                new WeatherParams(
+                    city,
+                    RetrieveSkyCondition(rng),
+                    RetrieveWind(rng),
+                    RetrieveVisibility(rng),
+                    RetrieveDewPoint(rng),
+                    RetrieveRelativeHumidity(rng),
+                    RetrievePressure(rng),
+                    RetrieveTime(),
+                    RetrieveTemperatureC(rng));
             return returnWeatherParams;
         }
     }
