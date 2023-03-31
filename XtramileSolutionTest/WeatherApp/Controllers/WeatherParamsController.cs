@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WeatherApp.Models;
 using WeatherApp.Services;
@@ -10,17 +11,18 @@ namespace WeatherApp.Controllers
     public class WeatherParamsController : ControllerBase
     {
         private readonly ILogger<WeatherParamsController> _logger;
+        private readonly IWeatherParamsService _weatherParamsService;
 
         public WeatherParamsController(ILogger<WeatherParamsController> logger)
         {
             _logger = logger;
+            _weatherParamsService = new WeatherParamsService();
         }
 
         [HttpGet]
-        public IWeatherParams Get(string city)
+        public Task<IWeatherParams> Get(string city)
         {
-            IWeatherParamsService weatherParamsService = new WeatherParamsService();
-            return weatherParamsService.RetrieveWeather(city);
+            return Task.FromResult(_weatherParamsService.RetrieveWeather(city));
         }
     }
 }
