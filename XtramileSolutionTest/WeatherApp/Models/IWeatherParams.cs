@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace XtramileSolutionTest.Models
+﻿namespace WeatherApp.Models
 {
     public interface IWeatherParams
     {

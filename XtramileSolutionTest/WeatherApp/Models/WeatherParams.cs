@@ -1,6 +1,6 @@
 using System;
 
-namespace XtramileSolutionTest.Models
+namespace WeatherApp.Models
 {
     public class WeatherParams : IWeatherParams
     {
@@ -13,7 +13,8 @@ namespace XtramileSolutionTest.Models
             string _relativeHumidity,
             string _pressure,
             DateTime _time,
-            int _temperatureC)
+            int _temperatureC,
+            int _temperatureF)
         {
             Location = _location;
             Wind = _wind;
@@ -24,17 +25,9 @@ namespace XtramileSolutionTest.Models
             Pressure = _pressure;
             Time = _time;
             TemperatureC = _temperatureC;
-            TemperatureF = convertCToF(TemperatureC);
+            TemperatureF = _temperatureF;
         }
 
-        public int convertCToF(int temperatureC)
-        {
-            return 32 + (int) (temperatureC / 0.5556);
-        }
-        public int convertFToC(int temperatureC)
-        {
-            return (int) ((temperatureC - 32) * 0.5556);
-        }
         public string Location { get; set; }
         public string Wind { get; set; }
         public string Visibility { get; set; }

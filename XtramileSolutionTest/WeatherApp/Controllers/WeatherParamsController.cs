@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using XtramileSolutionTest.Models;
-using XtramileSolutionTest.Services;
+using WeatherApp.Models;
+using WeatherApp.Services;
 
-namespace XtramileSolutionTest.Controllers
+namespace WeatherApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -19,7 +19,8 @@ namespace XtramileSolutionTest.Controllers
         [HttpGet]
         public IWeatherParams Get(string city)
         {
-            return WeatherParamsService.RetrieveWeather(city);
+            IWeatherParamsService weatherParamsService = new WeatherParamsService();
+            return weatherParamsService.RetrieveWeather(city);
         }
     }
 }

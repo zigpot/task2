@@ -1,4 +1,4 @@
-﻿namespace XtramileSolutionTest.Models
+﻿namespace WeatherApp.Models
 {
     public interface ICountries
     {

@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Globalization;
-using XtramileSolutionTest.Models;
+using WeatherApp.Models;
 
-namespace XtramileSolutionTest.Services
+namespace WeatherApp.Services
 {
-    public class WeatherParamsService
+    public class WeatherParamsService : IWeatherParamsService
     {
+        public int ConvertCToF(int temperatureC)
+        {
+            return 32 + (int) (temperatureC / 0.5556);
+        }
+
+        public int ConvertFToC(int temperatureC)
+        {
+            return (int) ((temperatureC - 32) * 0.5556);
+        }
+
         public WeatherParamsService()
         {
             ;
         }
 
-        private static readonly string[] SkyConditions = {
+        private static readonly string[] SkyConditions =
+        {
             "Clear", "Mostly Clear", "Partly Cloudy", "Mostly Cloudy", "Cloudy", "Fair"
         };
 
@@ -55,22 +66,43 @@ namespace XtramileSolutionTest.Services
             return rng.Next(-20, 55);
         }
 
-        public static IWeatherParams RetrieveWeather(string city)
+        public IWeatherParams RetrieveWeather(string city)
         {
             int seed = (city + (DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond)).GetHashCode();
             Random rng = new Random(seed);
+
+            string skyCondition = RetrieveSkyCondition(rng);
+            string wind = RetrieveWind(rng);
+            string visibility = RetrieveVisibility(rng);
+            string dewPoint = RetrieveDewPoint(rng);
+            string relativeHumidity = RetrieveRelativeHumidity(rng);
+            string pressure = RetrievePressure(rng);
+            DateTime time = RetrieveTime();
+            int temperatureC = RetrieveTemperatureC(rng);
+            int temperatureF = ConvertCToF(temperatureC);
             WeatherParams returnWeatherParams =
                 new WeatherParams(
                     city,
-                    RetrieveSkyCondition(rng),
-                    RetrieveWind(rng),
-                    RetrieveVisibility(rng),
-                    RetrieveDewPoint(rng),
-                    RetrieveRelativeHumidity(rng),
-                    RetrievePressure(rng),
-                    RetrieveTime(),
-                    RetrieveTemperatureC(rng));
+                    skyCondition,
+                    wind,
+                    visibility,
+                    dewPoint,
+                    relativeHumidity,
+                    pressure,
+                    time,
+                    temperatureC,
+                    temperatureF
+                );
             return returnWeatherParams;
         }
+    }
+
+    public interface IWeatherParamsService
+    {
+        public int ConvertCToF(int temperatureC);
+
+        public int ConvertFToC(int temperatureC);
+
+        public IWeatherParams RetrieveWeather(string city);
     }
 }

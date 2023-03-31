@@ -1,4 +1,4 @@
-﻿namespace XtramileSolutionTest.Services
+﻿namespace WeatherApp.Services
 {
     public class CountriesService
     {

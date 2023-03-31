@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace XtramileSolutionTest.Models
+namespace WeatherApp.Models
 {
     public class Cities : ICities
     {

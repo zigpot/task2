@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using XtramileSolutionTest.Models;
+using WeatherApp.Models;
 
-namespace XtramileSolutionTest.Controllers
+namespace WeatherApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
